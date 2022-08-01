@@ -1,6 +1,6 @@
 function Container(){
     return <div>
-        Hola mundo
+        Hola mundo :)
     </div>;
 }
 
