@@ -10,7 +10,9 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <ItemCount stock="15"></ItemCount>
+      <div align="center">
+        <ItemCount stock="15"></ItemCount>
+      </div>
       <ItemListContainer
         text1="Tecnología"
         text2="Gadgets"

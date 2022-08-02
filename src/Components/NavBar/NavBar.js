@@ -4,6 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import CarWidget from "../CarWidget/CarWidget";
 import carrito from "../Image/carrito.png";
+import pinguin from "../Image/pinguin.png";
 
 function NavBar() {
   return (
@@ -13,9 +14,9 @@ function NavBar() {
           <Navbar.Brand href="#home">
             <img
               alt=""
-              src="/logo.svg"
-              width="30"
-              height="30"
+              src={pinguin}
+              width="45"
+              height="45"
               className="d-inline-block align-top"
             />{" "}
             AG's Shop
