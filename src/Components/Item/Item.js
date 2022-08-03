@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import { useState, useEffect } from "react";
 
-function ItemCount(props) {
+function Item(props) {
   const [contador, setContador] = useState(
     props.initial > 0 ? props.initial : 0
   );
@@ -43,15 +43,16 @@ function ItemCount(props) {
         <Card.Img variant="top" />
         <img
           alt=""
-          src="./Img/IA.png"
+          src={props.imagen}
           width="250"
           height="180"
           align="center"
         />
       </div>
       <Card.Body>
-        <Card.Title>Card title</Card.Title>
-        <Card.Text>This is a text that will be replace.</Card.Text>
+        <Card.Title>{props.nombre}</Card.Title>
+        <Card.Text>Costo {props.precio} $</Card.Text>
+        <Card.Text>Cantidad de stock {props.stock}</Card.Text>
         <ButtonGroup aria-label="Basic example">
           <Button variant="secondary" onClick={quitarAlContador}>
             -
@@ -69,4 +70,4 @@ function ItemCount(props) {
   );
 }
 
-export default ItemCount;
+export default Item;

@@ -2,9 +2,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import CarWidget from "../CarWidget/CarWidget";
-import carrito from "../Image/carrito.png";
-import pinguin from "../Image/pinguin.png";
 
 function NavBar() {
   return (
@@ -14,11 +11,11 @@ function NavBar() {
           <Navbar.Brand href="#home">
             <img
               alt=""
-              src={pinguin}
+              src="./Img/pinguin.png"
               width="45"
               height="45"
               className="d-inline-block align-top"
-            />{" "}
+            />
             AG's Shop
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -39,7 +36,12 @@ function NavBar() {
               <Nav.Link href="#contactanos">Contactanos</Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <CarWidget imagen={carrito} />
+          <img
+            alt=""
+            src="https://cdn-icons-png.flaticon.com/512/5087/5087847.png"
+            width="45"
+            height="45"
+          />
         </Container>
       </Navbar>
     </div>

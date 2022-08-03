@@ -1,18 +1,48 @@
-const estilos = {
-  borderWidth: "10px",
-  borderColor: "#000000",
-  borderStyle: "dashed solid",
-  padding: "40px",
-  margin: "40px",
-  fontSize: "3rem",
-};
+import ItemList from "../ItemList/ItemList";
+import Data from "../../Data/Data";
+import { useState, useEffect } from "react";
 
 function ItemListContainer(props) {
+  const getFetch = new Promise((res, rej) => {
+    if (true) {
+      setTimeout(() => {
+        res(Data);
+      }, 2000);
+    }
+  });
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getFetch
+      .then((resp) => setData(resp))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  });
+
   return (
     <div>
-      <div style={estilos}>{props.text1}</div>
-      <div style={estilos}>{props.text2}</div>
-      <div style={estilos}>{props.text3}</div>
+      {loading ? <h2>Cargando...</h2> : <ItemList data={data}></ItemList>}
+      {/* <Container>
+        <Row>
+          <Col>
+            <div align="center">
+              <ItemCount stock= "15"></ItemCount>
+            </div>
+          </Col>
+          <Col>
+            <div align="center">
+              <ItemCount stock= "15"></ItemCount>
+            </div>
+          </Col>
+          <Col>
+            <div align="center">
+              <ItemCount stock= "15"></ItemCount>
+            </div>
+          </Col>
+        </Row>
+      </Container> */}
     </div>
   );
 }
