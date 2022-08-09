@@ -2,7 +2,7 @@ import ItemList from "../ItemList/ItemList";
 import Data from "../../Data/Data";
 import { useState, useEffect } from "react";
 
-function ItemListContainer(props) {
+function ItemListContainer() {
   const getFetch = new Promise((res, rej) => {
     if (true) {
       setTimeout(() => {
@@ -19,30 +19,11 @@ function ItemListContainer(props) {
       .then((resp) => setData(resp))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  });
+  })
 
   return (
     <div>
       {loading ? <h2>Cargando...</h2> : <ItemList data={data}></ItemList>}
-      {/* <Container>
-        <Row>
-          <Col>
-            <div align="center">
-              <ItemCount stock= "15"></ItemCount>
-            </div>
-          </Col>
-          <Col>
-            <div align="center">
-              <ItemCount stock= "15"></ItemCount>
-            </div>
-          </Col>
-          <Col>
-            <div align="center">
-              <ItemCount stock= "15"></ItemCount>
-            </div>
-          </Col>
-        </Row>
-      </Container> */}
     </div>
   );
 }
