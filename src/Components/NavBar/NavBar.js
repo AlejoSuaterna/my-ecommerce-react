@@ -2,13 +2,14 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import {Link} from "react-router-dom";
 
 function NavBar() {
   return (
     <div classname="navar">
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to="/">
             <img
               alt=""
               src="./Img/pinguin.png"
@@ -22,18 +23,18 @@ function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">
-                  Primer categoria
+                <NavDropdown.Item as={Link} to="/">
+                  todos
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Segunda categoria
+                <NavDropdown.Item as={Link} to="category/mazda">
+                  mazda
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Tercera categoria
+                <NavDropdown.Item as={Link} to="category/ford">
+                  ford
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link href="#quienessomos">Quienes somos</Nav.Link>
-              <Nav.Link href="#contactanos">Contactanos</Nav.Link>
+              <Nav.Link as={Link} to="/QuienesSomos">Quienes somos</Nav.Link>
+              <Nav.Link as={Link} to="/Contactanos">Contactanos</Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <img

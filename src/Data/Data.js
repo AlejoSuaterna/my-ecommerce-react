@@ -2,6 +2,7 @@ const Data = [
   {
     id: 152,
     nombre: "Primer Objeto",
+    categoria: "mazda",
     precio: 400000,
     stock: 15,
     imagen:
@@ -10,6 +11,7 @@ const Data = [
   {
     id: 153,
     nombre: "Segundo Objeto",
+    categoria: "mazda",
     precio: 50000,
     stock: 5,
     imagen:
@@ -18,6 +20,7 @@ const Data = [
   {
     id: 154,
     nombre: "Tercer Objeto",
+    categoria: "ford",
     precio: 35000,
     stock: 15,
     imagen:
@@ -26,19 +29,12 @@ const Data = [
   {
     id: 155,
     nombre: "Cuarto objeto",
+    categoria: "ford",
     precio: 100000,
     stock: 15,
     imagen:
       "https://elcomercio.pe/resizer/iO2UZURF2o85-18fyBafP6TSU5Q=/1200x800/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/KX5NCAYQHBG4PJGSCVQXO2PLY4.jpg",
   },
-
 ];
-export const getProductById = (id) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(Data.find((prod) => prod.id === id));
-    }, 500);
-  });
-};
 
 export default Data;

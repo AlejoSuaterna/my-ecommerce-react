@@ -1,3 +1,7 @@
+# DESCRIPCIÓN DEL PROYECTO
+
+Este proyecto es un e-commerce que hasta el momento no tiene definición de un producto especifico. Con este proyecto se busca realizar una profundización de React Js.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
