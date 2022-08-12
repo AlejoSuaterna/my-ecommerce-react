@@ -25,7 +25,7 @@ export default function ItemDetailContainer() {
   return (
     <div>
       <h1>DETALLE DEL PRODUCTO</h1>
-      <p>este es el numero del id recibido: {prodId} y el de respuesta {producto.id}</p>
+      <p>este es el numero del id recibido: {prodId}</p>
       {loading ? <h2>Cargando detalles...</h2> : <ItemDetail {...producto} />}
     </div>
   );

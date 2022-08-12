@@ -6,7 +6,6 @@ import ItemCount from "../ItemCount/ItemCount";
 function ItemDetail({ imagen, nombre, precio, stock }) {
   return (
     <p>
-      <p>HOLA MUNDO</p>
       <Card style={{ width: "18rem" }}>
         <h2>Detalles</h2>
         <div align="center">

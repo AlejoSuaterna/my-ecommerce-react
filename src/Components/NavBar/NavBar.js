@@ -23,7 +23,7 @@ function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav>
               <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/">
+                <NavDropdown.Item as={Link} to={"/"}>
                   todos
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to={`/category/mazda`}>

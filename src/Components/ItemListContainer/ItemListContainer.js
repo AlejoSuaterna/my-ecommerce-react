@@ -1,12 +1,12 @@
 import ItemList from "../ItemList/ItemList";
 import Data from "../../Data/Data";
 import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function ItemListContainer() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  // const { categoryId } = useParams();
+  const { categoryId } = useParams();
 
   const getFetch = new Promise((res) => {
     if (true) {
@@ -17,11 +17,22 @@ function ItemListContainer() {
   });
 
   useEffect(() => {
-      getFetch
-        .then((resp) => setData(resp))
-        .catch((err) => console.log(err))
-        .finally(() => setLoading(false));
-  });
+    getFetch
+      .then((res) => {
+        if (categoryId) {
+          setData(res.filter((products) => products.categoria == categoryId));
+        } else setData(res);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  }, [categoryId]);
+
+  // useEffect(() => {
+  //   getFetch
+  //     .then((resp) => setData(resp))
+  //     .catch((err) => console.log(err))
+  //     .finally(() => setLoading(false));
+  // }, [categoryId]);
 
   return (
     <div>
