@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
@@ -26,15 +26,24 @@ function NavBar() {
                 <NavDropdown.Item as={Link} to="/">
                   todos
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="category/mazda">
+                <NavDropdown.Item as={Link} to={`/category/mazda`}>
                   mazda
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="category/ford">
+                {/* <Link to={`/category/mazda`}>
+                  <Button type="button" className="btn btn-outline-dark">
+                    Detalle
+                  </Button>
+                </Link> */}
+                <NavDropdown.Item as={Link}to={`/category/ford`}>
                   ford
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link as={Link} to="/QuienesSomos">Quienes somos</Nav.Link>
-              <Nav.Link as={Link} to="/Contactanos">Contactanos</Nav.Link>
+              <Nav.Link as={Link} to="/QuienesSomos">
+                Quienes somos
+              </Nav.Link>
+              <Nav.Link as={Link} to="/Contactanos">
+                Contactanos
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <img

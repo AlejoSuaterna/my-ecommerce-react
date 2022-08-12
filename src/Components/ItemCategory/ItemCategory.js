@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 import ItemCount from "../ItemCount/ItemCount";
-function Item({ id, nombre, precio, stock, imagen, categoria }) {
- 
+
+function ItemCategory({ id, nombre, precio, stock, imagen, categoria }) {
   return (
     <Card style={{ width: "18rem" }}>
       <div align="center">
@@ -19,7 +19,7 @@ function Item({ id, nombre, precio, stock, imagen, categoria }) {
         <ItemCount stock={stock} inicial={0} />
         <Link to={`/detail/${id}`}>
           <Button type="button" className="btn btn-outline-dark">
-            Detalle 
+            Detalle
           </Button>
         </Link>
       </Card.Body>
@@ -30,4 +30,4 @@ function Item({ id, nombre, precio, stock, imagen, categoria }) {
   );
 }
 
-export default Item;
+export default ItemCategory;

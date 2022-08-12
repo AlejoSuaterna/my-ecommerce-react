@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import ItemCount from "../ItemCount/ItemCount";
 
-function ItemDetail({ data }) {
+function ItemDetail({ imagen, nombre, precio, stock }) {
   return (
     <p>
       <p>HOLA MUNDO</p>
@@ -13,17 +13,17 @@ function ItemDetail({ data }) {
           <Card.Img variant="top" />
           <img
             alt=""
-            src={data.imagen}
+            src={imagen}
             width="250"
             height="180"
             align="center"
           />
         </div>
         <Card.Body>
-          <Card.Title>{data.nombre}</Card.Title>
-          <Card.Text>Costo $ {data.precio}</Card.Text>
-          <Card.Text>Cantidad en stock {data.stock}</Card.Text>
-          <ItemCount stock={data.stock} inicial={0} />
+          <Card.Title>{nombre}</Card.Title>
+          <Card.Text>Costo $ {precio}</Card.Text>
+          <Card.Text>Cantidad en stock {stock}</Card.Text>
+          <ItemCount stock={stock} inicial={0} />
         </Card.Body>
         <Card.Footer>
           <Button variant="primary">Agregar al carrito</Button>

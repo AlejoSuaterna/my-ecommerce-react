@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import ItemDetail from "../ItemDetail/ItemDetail";
 import Data from "../../Data/Data";
 import { useParams } from "react-router-dom";
+import ItemCategory from "../ItemCategory/ItemCategory";
 
 export default function ItemDetailContainer() {
 
-  const [producto, setData] = useState({});
+  const [producto, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { prodId } = useParams();
+  const { categoryId } = useParams();
 
   const getFetch = new Promise((resolve) => {
     setTimeout(() => {
@@ -17,16 +17,16 @@ export default function ItemDetailContainer() {
 
   useEffect(() => {
     getFetch
-      .then((resp) => setData(resp.find((prod) => prod.id == prodId)))
+      .then((resp) => setData(resp.filter(products => products.categoria == categoryId)))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  }, [prodId]);
+  }, [categoryId]);
 
   return (
     <div>
-      <h1>DETALLE DEL PRODUCTO</h1>
-      <p>este es el numero del id recibido: {prodId} y el de respuesta {producto.id}</p>
-      {loading ? <h2>Cargando detalles...</h2> : <ItemDetail {...producto} />}
+      <h1>PRODUCTO POR CATEGORIA</h1>
+      <p>esta es la categoria recibida: {categoryId}</p>
+      {loading ? <h2>Cargando categorias...</h2> : <ItemCategory {...producto} />}
     </div>
   );
 }
