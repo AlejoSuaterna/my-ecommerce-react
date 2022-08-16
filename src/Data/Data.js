@@ -1,39 +1,39 @@
 const Data = [
   {
-    id: 152,
-    nombre: "Primer Objeto",
-    categoria: "mazda",
-    precio: 400000,
+    id: 1,
+    nombre: "Cubo rubik 3x3",
+    categoria: "cuboSencillo",
+    precio: 18000,
     stock: 15,
     imagen:
-      "https://www.elcarrocolombiano.com/wp-content/uploads/2021/02/20210208-TOP-75-CARROS-MAS-VENDIDOS-DE-COLOMBIA-EN-ENERO-2021-01.jpg",
+      "https://http2.mlstatic.com/D_NQ_NP_865224-MLM40612839848_012020-O.webp",
   },
   {
-    id: 153,
-    nombre: "Segundo Objeto",
-    categoria: "mazda",
-    precio: 50000,
+    id: 2,
+    nombre: "Cubo rubik 4x4",
+    categoria: "cuboSencillo",
+    precio: 20000,
     stock: 5,
     imagen:
-      "https://i0.wp.com/pysnnoticias.com/wp-content/uploads/2021/07/coches-mas-bonitos-del-mundo.jpg?resize=560%2C479&ssl=1",
+      "https://http2.mlstatic.com/D_NQ_NP_925690-MCO49117643464_022022-O.jpg",
   },
   {
-    id: 154,
-    nombre: "Tercer Objeto",
-    categoria: "ford",
-    precio: 35000,
+    id: 3,
+    nombre: "Cubo rubik mirror dorado",
+    categoria: "cuboMirror",
+    precio: 25000,
     stock: 15,
     imagen:
-      "https://loscoches.com/wp-content/uploads/2021/04/carros-deportivos-potencia.jpg",
+      "https://m.media-amazon.com/images/I/41otyAlvXfL.jpg",
   },
   {
-    id: 155,
-    nombre: "Cuarto objeto",
-    categoria: "ford",
+    id: 4,
+    nombre: "Cubo rubik mirror plateado",
+    categoria: "cuboMirror",
     precio: 100000,
     stock: 15,
     imagen:
-      "https://elcomercio.pe/resizer/iO2UZURF2o85-18fyBafP6TSU5Q=/1200x800/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/KX5NCAYQHBG4PJGSCVQXO2PLY4.jpg",
+      "https://http2.mlstatic.com/D_NQ_NP_785920-MLA25891948000_082017-O.jpg",
   },
 ];
 

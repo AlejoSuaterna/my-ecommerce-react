@@ -21,7 +21,7 @@ function ItemListContainer() {
       .then((res) => {
         if (categoryId) {
           setData(res.filter((products) => products.categoria == categoryId));
-        } else setData(res);
+        } else setData  (res);
       })
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));

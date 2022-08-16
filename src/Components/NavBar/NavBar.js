@@ -26,16 +26,11 @@ function NavBar() {
                 <NavDropdown.Item as={Link} to={"/"}>
                   todos
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to={`/category/mazda`}>
-                  mazda
+                <NavDropdown.Item as={Link} to={`/category/cuboSencillo`}>
+                  cubo rubik sencillo
                 </NavDropdown.Item>
-                {/* <Link to={`/category/mazda`}>
-                  <Button type="button" className="btn btn-outline-dark">
-                    Detalle
-                  </Button>
-                </Link> */}
-                <NavDropdown.Item as={Link}to={`/category/ford`}>
-                  ford
+                <NavDropdown.Item as={Link} to={`/category/cuboMirror`}>
+                  cubo rubik Mirror
                 </NavDropdown.Item>
               </NavDropdown>
               <Nav.Link as={Link} to="/QuienesSomos">

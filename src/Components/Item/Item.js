@@ -9,7 +9,7 @@ function Item({ id, nombre, precio, stock, imagen, categoria }) {
     <Card style={{ width: "18rem" }}>
       <div align="center">
         <Card.Img variant="top" />
-        <img alt="" src={imagen} width="250" height="180" align="center" />
+        <img alt="" src={imagen} width="230" height="200" align="center" />
       </div>
       <Card.Body>
         <Card.Title>{nombre}</Card.Title>

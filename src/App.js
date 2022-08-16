@@ -7,6 +7,7 @@ import ItemListContainer from "./Components/ItemListContainer/ItemListContainer"
 import QuienesSomos from "./Pages/QuienesSomos";
 import Contactanos from "./Pages/Contactanos";
 import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
+import Cart from './Pages/Cart';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/detail/:prodId" element={<ItemDetailContainer />} />
           <Route path="/QuienesSomos" element={<QuienesSomos />} />
           <Route path="/Contactanos" element={<Contactanos />} />
+          <Route path="/Cart" element={<Cart />} />
         </Routes>
       </BrowserRouter>
       <header className="App-header"></header>
