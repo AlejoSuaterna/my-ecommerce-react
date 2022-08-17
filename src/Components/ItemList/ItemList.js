@@ -3,7 +3,7 @@ import Item from "../Item/Item";
 
 const ItemList = ({ data }) => {
   return (
-    <div div class="row align-items-start">
+    <div className="row align-items-start">
       {data.map((data) => {
         return <Item key={data.id} {...data} />;
       })}

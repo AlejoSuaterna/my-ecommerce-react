@@ -7,21 +7,27 @@ import ItemListContainer from "./Components/ItemListContainer/ItemListContainer"
 import QuienesSomos from "./Pages/QuienesSomos";
 import Contactanos from "./Pages/Contactanos";
 import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
-import Cart from './Pages/Cart';
+import Cart from "./Pages/Cart";
+import CartProvider from "./context/CartContext";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route path='/category/:categoryId'  element={<ItemListContainer />}/>
-          <Route path="/detail/:prodId" element={<ItemDetailContainer />} />
-          <Route path="/QuienesSomos" element={<QuienesSomos />} />
-          <Route path="/Contactanos" element={<Contactanos />} />
-          <Route path="/Cart" element={<Cart />} />
-        </Routes>
+        <CartProvider>
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route
+              path="/category/:categoryId"
+              element={<ItemListContainer />}
+            />
+            <Route path="/detail/:prodId" element={<ItemDetailContainer />} />
+            <Route path="/QuienesSomos" element={<QuienesSomos />} />
+            <Route path="/Contactanos" element={<Contactanos />} />
+            <Route path="/Cart" element={<Cart />} />
+          </Routes>
+        </CartProvider>
       </BrowserRouter>
       <header className="App-header"></header>
       <Container />

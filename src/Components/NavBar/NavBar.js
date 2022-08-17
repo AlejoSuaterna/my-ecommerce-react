@@ -2,11 +2,12 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import CarWidget from "../CarWidget/CarWidget";
 import { Link } from "react-router-dom";
 
 function NavBar() {
   return (
-    <div classname="navar">
+    <div className="navar">
       <Navbar bg="dark" variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">
@@ -41,12 +42,7 @@ function NavBar() {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <img
-            alt=""
-            src="https://cdn-icons-png.flaticon.com/512/5087/5087847.png"
-            width="45"
-            height="45"
-          />
+          <CarWidget/>
         </Container>
       </Navbar>
     </div>

@@ -23,9 +23,6 @@ function Item({ id, nombre, precio, stock, imagen, categoria }) {
           </Button>
         </Link>
       </Card.Body>
-      <Card.Footer>
-        <Button variant="primary">Agregar al carrito</Button>
-      </Card.Footer>
     </Card>
   );
 }
