@@ -12,7 +12,7 @@ export default function CartProvider({ children }) {
     setCart(newCart);
   };
 
-  console.log('carrito: ', cart);
+  // console.log('carrito: ', cart);
 
   const clearCart = () => setCart([]);
   const isInCart = (id) =>

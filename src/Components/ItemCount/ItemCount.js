@@ -3,23 +3,12 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 function ItemCount(props) {
-  // const [contador, setContador] = useState(props.inicial);
+  const [contador, setContador] = useState(Number(props.inicial));
 
-  // function agregarAlContador() {
-  //   if (contador >= props.stock) {
-  //     alert(`El maximo de unidades es de: ${props.stock}`);
-  //   } else {
-  //     setContador(contador + 1);
-  //   }
-  // }
-
-  // function restarAlContador() {
-  //   if (contador > 0) {
-  //     setContador(contador - 1);
-  //   }
-  // }
-
-  const [contador, setContador] = useState(0);
+  const onAdd = () => {
+    console.log(`${contador} agregados al carrito!`);
+    props.onAddToCart(contador);
+  };
 
   return (
     <div className="d-flex flex-row justify-content-center mt-2">
@@ -46,9 +35,7 @@ function ItemCount(props) {
         <Card.Footer>
           <Button
             variant="primary"
-            onClick={() => {
-              props.onAddToCart();
-            }}
+            onClick={onAdd}
           >
             Agregar al carrito
           </Button>

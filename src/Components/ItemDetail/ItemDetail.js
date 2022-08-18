@@ -39,10 +39,9 @@ function ItemDetail({ id, imagen, nombre, precio, stock }) {
         ) : (
           <div>
             <ItemCount
+              onAddToCart={onAddItems}
               stock={stock}
               inicial={0}
-              onAddToCart={onAddItems}
-              // onAddToCart={(onAddItems = { onAddItems })}
             ></ItemCount>
           </div>
         )}
