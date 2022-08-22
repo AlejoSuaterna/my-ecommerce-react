@@ -18,7 +18,7 @@ function ItemDetail({ id, imagen, nombre, precio, stock }) {
     <div className="row g-0">
       <h2>Detalles</h2>
       <div className="col-sm-6 col-md-8">
-        <img src={imagen} tam="lg" ubi="mx-auto d-block" alt=""></img>
+        <img src={imagen} tam="lg" ubi="mx-auto d-block" alt="" height="400"></img>
       </div>
       <div className="col-6 col-md-4">
         <h2>{nombre}</h2>

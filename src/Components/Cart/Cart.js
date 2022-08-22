@@ -1,41 +1,44 @@
-import { useCartContext } from "../context/CartContext";
+import { useCartContext } from "../../context/CartContext";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
+import React from "react";
 const Cart = () => {
-  const { cart, removeProduct } = useCartContext();
-  
+  const { cartData, removeProduct } = useCartContext();
+  const totalPrecio = cartData.reduce((prev, next) => {
+    return prev + next.quantity * next.precio;
+  }, 0);
+
   return (
     <div className="cartContainer">
-      {console.log(cart)}
+      {console.log(cartData)}
       <div className="cartTittle">
         <h2>Tu carrito</h2>
         <hr />
       </div>
       <hr />
-      <Container className="cartGrid">
-        <Row className="datosGrid">
-          <Col m={1}>IMAGEN</Col>
-          <Col m={3}>PRODUCTO</Col>
-          <Col m={4} className="datosCant">
-            CANTIDAD
-          </Col>
-          <Col m={5}>PRECIO UNITARIO</Col>
-          <Col m={6}>PRECIO TOTAL</Col>
-          <Col m={7}>BORRAR PRODUCTO</Col>
-        </Row>
-        <Container className="containerProds">
-          {cart == "" ? (
-            <div className="vacio">
-              <p>¡El carrito está vacío!</p>
-              <Button as={Link} to="/" className="continue">
-                Ir de compras
-              </Button>
-            </div>
-          ) : (
-            <>
-              {cart.map((props) => (
+      {cartData == "" ? (
+        <div className="vacio">
+          <p>¡El carrito está vacío!</p>
+          <Button as={Link} to="/" className="continue">
+            Ir de compras
+          </Button>
+        </div>
+      ) : (
+        <>
+          {cartData.map((props) => (
+            <Container className="cartGrid">
+              <Row className="datosGrid">
+                <Col m={1}>IMAGEN</Col>
+                <Col m={3}>PRODUCTO</Col>
+                <Col m={4} className="datosCant">
+                  CANTIDAD
+                </Col>
+                <Col m={5}>PRECIO UNITARIO</Col>
+                <Col m={6}>PRECIO TOTAL</Col>
+                <Col m={7}>BORRAR PRODUCTO</Col>
+              </Row>
+              <Container className="containerProds">
                 <Row key={props.id} className="prodGrid">
                   <Col m={1} className="itemImg">
                     <Link to={`/detail/${props.nombre}`}>
@@ -49,7 +52,9 @@ const Cart = () => {
                     {props.quantity}
                   </Col>
                   <Col m={4} className="itemPrice">{`$ ${props.precio}`}</Col>
-                  <Col m={5} className="subTotal">{`$ ${props.precio * props.quantity}`}</Col>
+                  <Col m={5} className="subTotal">{`$ ${
+                    props.precio * props.quantity
+                  }`}</Col>
                   <Col m={6} className="itemClear">
                     <Button
                       className="clearProd"
@@ -57,31 +62,29 @@ const Cart = () => {
                     ></Button>
                   </Col>
                 </Row>
-              ))}
-            </>
-          )}
-        </Container>
-      </Container>
+              </Container>
+            </Container>
+          ))}
+        </>
+      )}
+      <div align="middle" category="">
+        <h2>Total: $ {totalPrecio}</h2>
+      </div>
       <hr />
-      {cart == "" ? (
+      {cartData == "" ? (
         <></>
       ) : (
         <div className="cartBottom">
-          {/* <div className="total">TOTAL: ${totalPrice}</div> */}
           <div className="cartButtons">
             <Button as={Link} to="/" className="continue">
               Continuar comprando
             </Button>
             <div className="bottomButtons">
-              {/* <Button className="clearCart" onClick={removeAll}>
-              vaciar carrito
-            </Button> */}
-              <Button className="finalizar ">FINALIZAR COMPRA</Button>
+              <Button as={Link} to="" className="finalizar " variant="success">FINALIZAR COMPRA</Button>
             </div>
           </div>
         </div>
       )}
-    <div>Esta es la cart: {cart.nombre}</div>
     </div>
   );
 };

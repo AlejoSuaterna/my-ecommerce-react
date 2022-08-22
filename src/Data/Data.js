@@ -19,7 +19,7 @@ const Data = [
   },
   {
     id: 3,
-    nombre: "Cubo rubik mirror dorado",
+    nombre: "Cubo mirror dorado",
     categoria: "cuboMirror",
     precio: 25000,
     stock: 15,
@@ -28,12 +28,39 @@ const Data = [
   },
   {
     id: 4,
-    nombre: "Cubo rubik mirror plateado",
+    nombre: "Cubo mirror plateado",
     categoria: "cuboMirror",
     precio: 100000,
     stock: 15,
     imagen:
       "https://http2.mlstatic.com/D_NQ_NP_785920-MLA25891948000_082017-O.jpg",
+  },
+  {
+    id: 5,
+    nombre: "Cubo moyu plateado",
+    categoria: "cuboMirror",
+    precio: 85000,
+    stock: 10,
+    imagen:
+      "https://i0.wp.com/cubizzperu.com/wp-content/uploads/2020/06/A059principal.jpg?fit=1200%2C1045&ssl=1",
+  },
+  {
+    id: 6,
+    nombre: "Cubo 3x3 negro",
+    categoria: "cuboSencillo",
+    precio: 50000,
+    stock: 10,
+    imagen:
+      "https://cloudfront-eu-central-1.images.arcpublishing.com/larazon/3W6VAGC2GNHCNIIJ2CRSCHUHWA.jpeg",
+  },
+  {
+    id: 7,
+    nombre: "Cubo 3x3 pastel",
+    categoria: "cuboSencillo",
+    precio: 50000,
+    stock: 8,
+    imagen:
+      "https://cdn.shopify.com/s/files/1/2255/7607/products/StickersColores_04_1024x1024@2x.jpg?v=1571709207",
   },
 ];
 

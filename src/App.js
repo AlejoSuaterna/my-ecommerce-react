@@ -7,7 +7,7 @@ import ItemListContainer from "./Components/ItemListContainer/ItemListContainer"
 import QuienesSomos from "./Pages/QuienesSomos";
 import Contactanos from "./Pages/Contactanos";
 import ItemDetailContainer from "./Components/ItemDetailContainer/ItemDetailContainer";
-import Cart from "./Pages/Cart";
+import Cart from "./Components/Cart/Cart";
 import CartProvider from "./context/CartContext";
 
 function App() {
