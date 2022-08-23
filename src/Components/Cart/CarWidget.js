@@ -6,9 +6,9 @@ const CartWidget = () => {
 
   const { cartData } = useCartContext();
 
-  // const totalItems = cartData.reduce((prev, next) => {
-  //   return prev + next.quantity;
-  // }, 0);
+  const totalItems = cartData.reduce((prev, next) => {
+    return prev + next.quantity;
+  }, 0);
 
   return (
     <Link className="cart-widget" to={"/cart"}>
@@ -19,7 +19,7 @@ const CartWidget = () => {
         width="45"
         height="45"
         />
-      {/* <span>{totalItems}</span> */}
+      <span>{totalItems}</span>
     </Link>
   );
 };
