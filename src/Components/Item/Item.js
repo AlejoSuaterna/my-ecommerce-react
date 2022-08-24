@@ -19,7 +19,7 @@ function Item({ id, nombre, precio, stock, imagen, categoria }) {
           <Button type="button" className="btn btn-outline-dark">
             Detalle 
           </Button>
-        </Link>
+        </Link> 
       </Card.Body>
     </Card>
   );
