@@ -18,7 +18,7 @@ const Cart = () => {
       </div>
       <hr />
       {cartData == "" ? (
-        <div className="vacio">
+        <div className="cartTittle">
           <p>¡El carrito está vacío!</p>
           <Button as={Link} to="/" className="continue">
             Ir de compras
@@ -26,18 +26,18 @@ const Cart = () => {
         </div>
       ) : (
         <>
-          {cartData.map((props) => (
-            <Container className="cartGrid">
-              <Row className="datosGrid">
-                <Col m={1}>IMAGEN</Col>
-                <Col m={3}>PRODUCTO</Col>
-                <Col m={4} className="datosCant">
-                  CANTIDAD
-                </Col>
-                <Col m={5}>PRECIO UNITARIO</Col>
-                <Col m={6}>PRECIO TOTAL</Col>
-                <Col m={7}>BORRAR PRODUCTO</Col>
-              </Row>
+          <Container className="cartGrid">
+            <Row className="datosGrid">
+              <Col m={1}>IMAGEN</Col>
+              <Col m={3}>PRODUCTO</Col>
+              <Col m={4} className="datosCant">
+                CANTIDAD
+              </Col>
+              <Col m={5}>PRECIO UNITARIO</Col>
+              <Col m={6}>PRECIO TOTAL</Col>
+              <Col m={7}>BORRAR PRODUCTO</Col>
+            </Row>
+            {cartData.map((props) => (
               <Container className="containerProds">
                 <Row key={props.id} className="prodGrid">
                   <Col m={1} className="itemImg">
@@ -63,8 +63,8 @@ const Cart = () => {
                   </Col>
                 </Row>
               </Container>
-            </Container>
-          ))}
+            ))}
+          </Container>
         </>
       )}
       <div align="middle" category="">
@@ -80,7 +80,9 @@ const Cart = () => {
               Continuar comprando
             </Button>
             <div className="bottomButtons">
-              <Button as={Link} to="" className="finalizar " variant="success">FINALIZAR COMPRA</Button>
+              <Button as={Link} to="" className="finalizar " variant="success">
+                FINALIZAR COMPRA
+              </Button>
             </div>
           </div>
         </div>
