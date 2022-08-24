@@ -24,12 +24,14 @@ export default function ItemDetailContainer() {
   // }, [prodId]);
 
   useEffect(() => {
-    const dbDoc = doc(DB, "producto", prodId);
-    getDoc(dbDoc)
+    const itemRef = doc(DB, "productos", prodId);
+    getDoc(itemRef)
       .then((res) => setData({ id: res.id, ...res.data() }))
       .catch((err) => console.log(err))
       .finally(console.log());
-  }, [prodId]);
+      // console.log("carrito en wid", data);
+
+    }, [prodId]);
 
   return (
     // <div>

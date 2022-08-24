@@ -12,7 +12,6 @@ const CartWidget = () => {
 
   return (
     <Link className="cart-widget" to={"/cart"}>
-      {console.log("carrito en wid", cartData)}
       <img
         alt=""
         src = "https://cdn-icons-png.flaticon.com/512/5087/5087847.png"

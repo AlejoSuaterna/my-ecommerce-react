@@ -27,10 +27,10 @@ function NavBar() {
                 <NavDropdown.Item as={Link} to={"/"}>
                   todos
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to={`/category/cuboSencillo`}>
+                <NavDropdown.Item as={Link} to={`/category/qTN4er3wxSkahKOE9xBn`}>
                   cubo rubik sencillo
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to={`/category/cuboMirror`}>
+                <NavDropdown.Item as={Link} to={`/category/35sFtcqIByuClg1Tbiwl`}>
                   cubo rubik Mirror
                 </NavDropdown.Item>
               </NavDropdown>

@@ -38,8 +38,8 @@ const Cart = () => {
               <Col m={7}>BORRAR PRODUCTO</Col>
             </Row>
             {cartData.map((props) => (
-              <Container className="containerProds">
-                <Row key={props.id} className="prodGrid">
+              <Container key={props.id} className="containerProds">
+                <Row className="prodGrid">
                   <Col m={1} className="itemImg">
                     <Link to={`/detail/${props.nombre}`}>
                       <img src={props.imagen} width="100px" alt=""></img>

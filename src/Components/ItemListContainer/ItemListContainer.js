@@ -1,6 +1,6 @@
 import ItemList from "../ItemList/ItemList";
 // import { getProductsData } from "../../Data/Data";
-import { collection, getDocs, query, where} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { DB } from "../../Data/DataFireBase";
 
 import { useState, useEffect } from "react";
@@ -39,39 +39,37 @@ function ItemListContainer() {
   //   getD();
   // }, [categoryId]);
 
-  useEffect(()=>{
-
+  useEffect(() => {
     const colRef = collection(DB, "productos");
-  
-    if(categoryId){
+
+    if (categoryId) {
       // con categoria
-      const  colFilterRef = query(colRef, 
-        where('cat', '==', categoryId))
-      getDocs(colRef)
-      .then(res=> setData(res.docs.map(prod => ({id:prod.id, ...prod.data()})))
-      )
-      getDocs(colFilterRef)
-      .then(res=> setData(res.docs.map(prod => ({id:prod.id, ...prod.data()})))
-      )}else{
-        // si no hay categoria
-        getDocs(colRef)
-        .then(res=> setData(res.docs.map(prod => ({id:prod.id, ...prod.data()})))
-        )
-      };  
-    
-  },[categoryId]);
+      const colFilterRef = query(colRef, where("categoria", "==", categoryId));
+      getDocs(colRef).then((res) =>
+        setData(res.docs.map((prod) => ({ id: prod.id, ...prod.data() })))
+      );
+      getDocs(colFilterRef).then((res) =>
+        setData(res.docs.map((prod) => ({ id: prod.id, ...prod.data() })))
+      );
+    } else {
+      // si no hay categoria
+      getDocs(colRef).then((res) =>
+        setData(res.docs.map((prod) => ({ id: prod.id, ...prod.data() })))
+      );
+    }
+  }, [categoryId]);
 
   return (
     // <div>
     //   {loading ? <h2>Cargando...</h2> : <ItemList data={data}></ItemList>}
     // </div>
     <div className="item-list-container">
-    {Array.isArray(data) && data.length === 0 ? (
+      {Array.isArray(data) && data.length === 0 ? (
         <div className="loading">Cargando productos...</div>
-    ) : (
+      ) : (
         <ItemList data={data} />
-    )}
-</div>
+      )}
+    </div>
   );
 }
 
