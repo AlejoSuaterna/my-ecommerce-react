@@ -21,26 +21,9 @@ export default function CartProvider({ children }) {
     console.log(">> elementos del carrito actualmente: ", newCart);
   };
 
-  // const addProduct = (id, imagen, nombre, precio, stock, newQuantity) => {
-  //   const newCart = cart.find((prod) => prod.id == id)
-  //     ? cart.map((prod) => {
-  //         if (prod.id == id) {
-  //           return {
-  //             ...cart,
-  //             id,
-  //             imagen,
-  //             nombre,
-  //             precio,
-  //             stock,
-  //             quantity: prod.quantity + newQuantity,
-  //           };
-  //         }
-  //         return prod;
-  //       })
-  //     : [{ ...cart, id, imagen, nombre, precio, stock, quantity: newQuantity }];
-
-  //   setCart(newCart);
-  // };
+  const removeList = () => {
+    setCart([]);
+  }
 
   const removeProduct = (id) =>
     setCart(cart.filter((product) => product.id !== id));
@@ -50,6 +33,7 @@ export default function CartProvider({ children }) {
       value={{
         addProduct,
         removeProduct,
+        removeList,
         cartData: cart,
       }}
     >
