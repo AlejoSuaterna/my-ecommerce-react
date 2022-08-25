@@ -1,7 +1,7 @@
-import { collection, doc, getDocs } from "firebase/firestore";
-import { DB } from "./DataFireBase";
+// import { collection, doc, getDocs } from "firebase/firestore";
+// import { DB } from "./DataFireBase";
 
-const Data = [
+// const Data = [
   // {
   //   id: 1,
   //   nombre: "Cubo rubik 3x3",
@@ -65,48 +65,48 @@ const Data = [
   //   imagen:
   //     "https://cdn.shopify.com/s/files/1/2255/7607/products/StickersColores_04_1024x1024@2x.jpg?v=1571709207",
   // },
-];
+// ];
 
-export default Data;
+// export default Data;
 
-export async function getProductsData(categoryId) {
-  let response = [];
-  // creo la referencia a la coleccion que quiero traer
-  const colRef = collection(DB, "productos");
+// export async function getProductsData(categoryId) {
+//   let response = [];
+//   // creo la referencia a la coleccion que quiero traer
+//   const colRef = collection(DB, "productos");
 
-  try {
-    const snapshot = await getDocs(colRef); // ya no necesito más el then
+//   try {
+//     const snapshot = await getDocs(colRef); // ya no necesito más el then
 
-    response = snapshot.docs.map((rawDoc) => {
-      return {
-        id: rawDoc.id,
-        ...rawDoc.data(),
-      };
-    });
-  } catch (err) {
-    console.log(">> Error al intentar traer los docs: ", err);
-  }
-  return response;
-}
+//     response = snapshot.docs.map((rawDoc) => {
+//       return {
+//         id: rawDoc.id,
+//         ...rawDoc.data(),
+//       };
+//     });
+//   } catch (err) {
+//     console.log(">> Error al intentar traer los docs: ", err);
+//   }
+//   return response;
+// }
 
-export async function getProductsDataDetail(categoryId) {
-  let response = [];
-  // creo la referencia a la coleccion que quiero traer
-  const itemRef = doc(DB, "productos", "productId");
+// export async function getProductsDataDetail(categoryId) {
+//   let response = [];
+//   // creo la referencia a la coleccion que quiero traer
+//   const itemRef = doc(DB, "productos", "productId");
 
-  try {
-    const snapshot = await getDocs(itemRef); // ya no necesito más el then
+//   try {
+//     const snapshot = await getDocs(itemRef); // ya no necesito más el then
 
-    if (snapshot.exists()) {
-      // Si existe el doc, podemos utilizar la info de snapshot
-      // recordando siempre de usar .data()
-      return {
-        id: snapshot.id,
-        ...snapshot.data(),
-      };
-    }
-  } catch (err) {
-    console.log(">> Error al intentar traer los docs: ", err);
-  }
-  return response;
-}
+//     if (snapshot.exists()) {
+//       // Si existe el doc, podemos utilizar la info de snapshot
+//       // recordando siempre de usar .data()
+//       return {
+//         id: snapshot.id,
+//         ...snapshot.data(),
+//       };
+//     }
+//   } catch (err) {
+//     console.log(">> Error al intentar traer los docs: ", err);
+//   }
+//   return response;
+// }

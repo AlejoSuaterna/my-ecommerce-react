@@ -12,7 +12,7 @@ function Item({ id, nombre, precio, stock, imagen, categoria }) {
       </div>
       <Card.Body>
         <Card.Title>{nombre}</Card.Title>
-        <Card.Text>Categoria: {categoria}</Card.Text>
+        {/* <Card.Text>Categoria: {categoria}</Card.Text> */}
         <Card.Text>Costo $ {precio}</Card.Text>
         <Card.Text>Cantidad en stock {stock}</Card.Text>
         <Link to={`/detail/${id}`}>

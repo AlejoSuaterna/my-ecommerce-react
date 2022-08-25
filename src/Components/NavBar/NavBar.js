@@ -1,11 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
+import { useCartContext } from "../../context/CartContext";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import CarWidget from "../Cart/CarWidget";
 import { Link } from "react-router-dom";
 
 function NavBar() {
+  const { cartData } = useCartContext();
   return (
     <div className="navar">
       <Navbar bg="dark" variant="dark">
@@ -42,7 +44,7 @@ function NavBar() {
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
-          <CarWidget/>
+          {(cartData.length>0)?<CarWidget/>:<p></p>}
         </Container>
       </Navbar>
     </div>

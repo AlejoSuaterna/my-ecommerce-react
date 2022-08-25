@@ -1,20 +1,12 @@
 import { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
-import Data from "../../Data/Data";
 import { useParams } from "react-router-dom";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
 import { DB } from "../../Data/DataFireBase";
 
 export default function ItemDetailContainer() {
   const [data, setData] = useState({});
-  const [loading, setLoading] = useState(true);
   const { prodId } = useParams();
-
-  const getFetch = new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(Data);
-    }, 500);
-  });
 
   // useEffect(() => {
   //   getFetch
@@ -29,16 +21,10 @@ export default function ItemDetailContainer() {
       .then((res) => setData({ id: res.id, ...res.data() }))
       .catch((err) => console.log(err))
       .finally(console.log());
-      // console.log("carrito en wid", data);
 
     }, [prodId]);
 
   return (
-    // <div>
-    //   <h1>DETALLE DEL PRODUCTO</h1>
-    //   <p>este es el numero del id recibido: {prodId}</p>
-    //   {loading ? <h2>Cargando detalles...</h2> : <ItemDetail {...data} />}
-    // </div>
     <div className="detailContainer">
       <h1>DETALLE DEL PRODUCTO</h1>
       <p>este es el numero del id recibido: {prodId}</p>

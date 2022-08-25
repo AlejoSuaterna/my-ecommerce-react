@@ -1,5 +1,4 @@
 import ItemList from "../ItemList/ItemList";
-// import { getProductsData } from "../../Data/Data";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { DB } from "../../Data/DataFireBase";
 
@@ -8,7 +7,6 @@ import { useParams } from "react-router-dom";
 
 function ItemListContainer() {
   const [data, setData] = useState([]);
-  // const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
 
   // const getFetch = new Promise((res) => {
@@ -18,26 +16,6 @@ function ItemListContainer() {
   //     }, 500);
   //   }
   // });
-
-  // useEffect(() => {
-  //   // getFetch
-  //   //   .then((res) => {
-  //   //     if (categoryId) {
-  //   //       setData(res.filter((products) => products.categoria == categoryId));
-  //   //     } else setData  (res);
-  //   //   })
-  //   //   .catch((err) => console.log(err))
-  //   //   .finally(() => setLoading(false));
-
-  //   // setData([]);
-
-  //   async function getD() {
-  //     const productsPosta = await getProductsData(categoryId);
-  //     setData(productsPosta);
-  //   }
-
-  //   getD();
-  // }, [categoryId]);
 
   useEffect(() => {
     const colRef = collection(DB, "productos");
@@ -60,9 +38,6 @@ function ItemListContainer() {
   }, [categoryId]);
 
   return (
-    // <div>
-    //   {loading ? <h2>Cargando...</h2> : <ItemList data={data}></ItemList>}
-    // </div>
     <div className="item-list-container">
       {Array.isArray(data) && data.length === 0 ? (
         <div className="loading">Cargando productos...</div>
