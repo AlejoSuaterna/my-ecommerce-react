@@ -2,24 +2,25 @@ import { useCartContext } from "../../context/CartContext";
 import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { doc, setDoc, collection, updateDoc, increment } from "firebase/firestore";
+import Form from "react-bootstrap/Form";
+import {doc,setDoc,collection,updateDoc,increment,} from "firebase/firestore";
 import React from "react";
 import styled from "styled-components";
 import { DB } from "../../Data/DataFireBase";
 
-const Summary = styled.div`
+const ResumOrder = styled.div`
   flex: 1;
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 70vh;
+  height: 90vh;
 `;
 
-const SummaryTitle = styled.h1`
+const OrderTitle = styled.h1`
   font-weight: 80;
 `;
 
-const SummaryItem = styled.div`
+const OrderItem = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
@@ -27,17 +28,27 @@ const SummaryItem = styled.div`
   font-size: ${(props) => props.type === "total" && "24px"};
 `;
 
-const SummaryItemText = styled.span``;
-
-const SummaryItemPrice = styled.span``;
+const OrderText = styled.span``;
+const OrderPrice = styled.span``;
 
 const Cart = () => {
+
   const { cartData, removeProduct, removeList } = useCartContext();
   const totalPrecio = cartData.reduce((prev, next) => {
     return prev + next.quantity * next.precio;
   }, 0);
+  var name = null;
+  var phone = null;
+  var email = null;
+
+  const getData = function () {
+    name = document.getElementById("name").value;
+    phone = document.getElementById("phone").value;
+    email = document.getElementById("email").value;
+  };
 
   const createOrder = () => {
+    getData();
     const itemsForDB = cartData.map((item) => ({
       id: item.id,
       nombre: item.nombre,
@@ -47,13 +58,14 @@ const Cart = () => {
 
     let order = {
       buyer: {
-        nombre: "que le importa xd",
-        phone: "1234567891",
-        email: "alejito@gmail.com",
+        nombre: name,
+        phone: phone,
+        email: email,
       },
       items: itemsForDB,
       total: totalPrecio,
     };
+    console.log(name + " " + phone + " " + email);
     const createOrderInFirestore = async () => {
       const newOrderRef = doc(collection(DB, "orders"));
       await setDoc(newOrderRef, order);
@@ -62,12 +74,12 @@ const Cart = () => {
     createOrderInFirestore()
       .then((result) => {
         alert("tu orden ha sido creada con el id" + result.id);
-        cartData.forEach(async (item) =>{
-          const itemRef = doc(DB, "productos", item.id)
+        cartData.forEach(async (item) => {
+          const itemRef = doc(DB, "productos", item.id);
           await updateDoc(itemRef, {
-            stock: increment(-item.quantity)
-          })
-        })
+            stock: increment(-item.quantity),
+          });
+        });
         removeList(cartData);
       })
       .catch((err) => console.log());
@@ -75,7 +87,6 @@ const Cart = () => {
 
   return (
     <div className="cartContainer">
-      {console.log(cartData)}
       <div className="cartTittle">
         <h2>Tu carrito</h2>
         <hr />
@@ -141,28 +152,51 @@ const Cart = () => {
               </Col>
               <Col>
                 {/* desde aqui está la orden */}
-                <Summary>
-                  <SummaryTitle>RESUMEN DE PEDIDO</SummaryTitle>
-                  <SummaryItem>
-                    <SummaryItemText>Subtotal</SummaryItemText>
-                    <SummaryItemPrice>{totalPrecio}</SummaryItemPrice>
-                  </SummaryItem>
-                  <SummaryItem>
-                    <SummaryItemText>Taxes</SummaryItemText>
-                    <SummaryItemPrice>{totalPrecio * 0.19}</SummaryItemPrice>
-                  </SummaryItem>
-                  <SummaryItem>
-                    <SummaryItemText>Taxes Discount</SummaryItemText>
-                    <SummaryItemPrice>{-(totalPrecio * 0.19)}</SummaryItemPrice>
-                  </SummaryItem>
-                  <SummaryItem type="total">
-                    <SummaryItemText>Total</SummaryItemText>
-                    <SummaryItemPrice>{totalPrecio}</SummaryItemPrice>
-                  </SummaryItem>
-                  <Button variant="success" onClick={createOrder}>
+                <ResumOrder>
+                  <OrderTitle>RESUMEN DE PEDIDO</OrderTitle>
+                  <OrderItem>
+                    <OrderText>Subtotal</OrderText>
+                    <OrderPrice>{totalPrecio}</OrderPrice>
+                  </OrderItem>
+                  <OrderItem>
+                    <OrderText>Impuesto</OrderText>
+                    <OrderPrice>{totalPrecio * 0.19}</OrderPrice>
+                  </OrderItem>
+                  <OrderItem>
+                    <OrderText>Valor sin impuesto</OrderText>
+                    <OrderPrice>{totalPrecio-(totalPrecio * 0.19)}</OrderPrice>
+                  </OrderItem>
+                  <OrderItem type="total">
+                    <OrderText>Total</OrderText>
+                    <OrderPrice>{totalPrecio}</OrderPrice>
+                  </OrderItem>
+                  <Form action="" id="form">
+                    <Form.Group className="mb-3">
+                      <Form.Control
+                        type="text"
+                        id="name"
+                        placeholder="Nombre"
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Control
+                        type="number"
+                        id="phone"
+                        placeholder="Telefono"
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <Form.Control
+                        type="email"
+                        id="email"
+                        placeholder="Email"
+                      />
+                    </Form.Group>
+                  </Form>
+                  <Button variant="success" onClick={() => createOrder()}>
                     FINALIZAR COMPRA
                   </Button>
-                </Summary>
+                </ResumOrder>
               </Col>
             </Row>
           </Container>

@@ -18,7 +18,6 @@ export default function CartProvider({ children }) {
       quantity: newQuantity,
     });
     setCart(newCart);
-    console.log(">> elementos del carrito actualmente: ", newCart);
   };
 
   const removeList = () => {
