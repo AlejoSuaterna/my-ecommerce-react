@@ -1,0 +1,11 @@
+.cartContainer {
+    margin-bottom: 20px;
+}
+
+.price {
+    content: '$';
+}
+
+.borrar {
+    color: #56070c;
+}

@@ -1,27 +1,29 @@
-import React from "react";
+import React from 'react';
+import Card from 'react-bootstrap/Card';
+import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import Button from "react-bootstrap/Button";
-function Item({ id, nombre, precio, stock, imagen, categoria }) {
- 
+import "./Item.css";
+
+function Item({ id, nombre, precio, stock, imagen }) {
+
   return (
-    <Card style={{ width: "18rem" }}>
-      <div align="center">
-        <Card.Img variant="top" />
-        <img alt="" src={imagen} width="230" height="200" align="center" />
+    <Col className="prod">
+      <div className='container2'>
+        <Link className='link' to={`/detail/${id}`}>
+          {stock == 0 ? <div>SIN STOCK</div> : ''}
+          <Card style={{ width: "18rem" }} className="">
+            <Card.Img variant="top" src={imagen} width="200" align="center" alt={nombre} />
+            <Card.Body>
+              <div className='p1'> {nombre} </div>
+              <div className='item__numbers'>
+                <Card.Text className='num'>stock: {stock}</Card.Text>
+                <Card.Text className='num'>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'COP', maximumSignificantDigits: 6 }).format(precio)}</Card.Text>
+              </div>
+            </Card.Body>
+          </Card>
+        </Link>
       </div>
-      <Card.Body>
-        <Card.Title>{nombre}</Card.Title>
-        {/* <Card.Text>Categoria: {categoria}</Card.Text> */}
-        <Card.Text>Costo $ {precio}</Card.Text>
-        <Card.Text>Cantidad en stock {stock}</Card.Text>
-        <Link to={`/detail/${id}`}>
-          <Button type="button" className="btn btn-outline-dark">
-            Detalle 
-          </Button>
-        </Link> 
-      </Card.Body>
-    </Card>
+    </Col>
   );
 }
 

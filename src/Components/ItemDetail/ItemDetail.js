@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../../context/CartContext";
 
-function ItemDetail({ id, imagen, nombre, precio, stock }) {
+function ItemDetail({ id, imagen, nombre, precio, stock, descripcion }) {
   const [addedToCart, setAddedToCart] = useState(false);
   const { addProduct } = useCartContext();
 
@@ -16,18 +16,18 @@ function ItemDetail({ id, imagen, nombre, precio, stock }) {
 
   return (
     <div className="row g-0">
-      <h2>Detalles</h2>
-      <div className="col-sm-6 col-md-8">
+      <div className="col-sm-6 col-md-7">
         <img src={imagen} tam="lg" ubi="mx-auto d-block" alt="" height="400"></img>
       </div>
-      <div className="col-6 col-md-4">
+      <div className="col-6 col-md-3">
         <h2>{nombre}</h2>
-        <h4>{"COP " + precio}</h4>
+        <h4>{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'COP' , maximumSignificantDigits: 6 }).format(precio)}</h4>
+        <p className="ext-muted">{descripcion}</p>
         <p className="text-muted">{"Lleva un maximo de " + stock + " unidades"}</p>
         {addedToCart ? (
           <div className="d-grid gap-2">
             <Link to="/cart">
-              <Button className="btnAdded">Ir al carrito</Button>
+              <Button className="btnAdded" variant="info">Ir al carrito</Button>
             </Link>
             <Link to="/">
               <button
@@ -41,7 +41,7 @@ function ItemDetail({ id, imagen, nombre, precio, stock }) {
             <ItemCount
               onAddToCart={onAddItems}
               stock={stock}
-              inicial={0}
+              inicial={1}
             ></ItemCount>
           </div>
         )}

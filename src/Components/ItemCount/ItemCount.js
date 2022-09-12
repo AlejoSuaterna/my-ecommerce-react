@@ -1,19 +1,20 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-
+import "./ItemCount.css"
 function ItemCount(props) {
   const [contador, setContador] = useState(Number(props.inicial));
 
   const onAdd = () => {
-    console.log(`${contador} agregados al carrito!`);
     props.onAddToCart(contador);
   };
 
   return (
-    <div className="d-flex flex-row justify-content-center mt-2">
+    
       <Card.Body>
-        <Button
+      
+      <Card.Body className ="px-2">
+        <Button className ="boton1"
           variant="secondary"
           onClick={() => {
             contador > 0 ? setContador(contador - 1) : setContador(contador);
@@ -21,8 +22,10 @@ function ItemCount(props) {
         >
           -
         </Button>
+
+        
         <Button variant="secondary">{contador}</Button>
-        <Button
+        <Button className ="boton2"
           variant="secondary"
           onClick={() => {
             props.stock > contador
@@ -32,16 +35,18 @@ function ItemCount(props) {
         >
           +
         </Button>
+        </Card.Body>
+        
         <Card.Footer>
-          <Button
-            variant="primary"
+          <Button className ="boton3"
+            variant="info"
             onClick={onAdd}
           >
             Agregar al carrito
           </Button>
         </Card.Footer>
       </Card.Body>
-    </div>
+   
   );
 }
 

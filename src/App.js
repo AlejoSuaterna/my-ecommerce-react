@@ -1,7 +1,6 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Container from "./Components/Container/Container";
 import NavBar from "./Components/NavBar/NavBar";
 import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
 import QuienesSomos from "./Pages/QuienesSomos";
@@ -29,8 +28,6 @@ function App() {
           </Routes>
         </CartProvider>
       </BrowserRouter>
-      <header className="App-header"></header>
-      <Container />
     </div>
   );
 }

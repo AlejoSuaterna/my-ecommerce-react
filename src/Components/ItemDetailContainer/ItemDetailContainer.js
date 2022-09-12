@@ -3,17 +3,10 @@ import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { DB } from "../../Data/DataFireBase";
-
+import "./ItemDetailContainer.css"
 export default function ItemDetailContainer() {
   const [data, setData] = useState({});
   const { prodId } = useParams();
-
-  // useEffect(() => {
-  //   getFetch
-  //     .then((resp) => setData(resp.find((prod) => prod.id == prodId)))
-  //     .catch((err) => console.log(err))
-  //     .finally(() => setLoading(false));
-  // }, [prodId]);
 
   useEffect(() => {
     const itemRef = doc(DB, "productos", prodId);
@@ -26,9 +19,11 @@ export default function ItemDetailContainer() {
 
   return (
     <div className="detailContainer">
-      <h1>DETALLE DEL PRODUCTO</h1>
-      <p>este es el numero del id recibido: {prodId}</p>
+      <h1 className="espacio">DETALLE DEL PRODUCTO</h1>
+      <div className="centrar">
       <ItemDetail {...data} />
+      </div>
+      
     </div>
   );
 }
