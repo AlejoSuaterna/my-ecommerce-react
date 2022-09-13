@@ -26,6 +26,10 @@
   margin-bottom: 10px;
 }
 
+.button__stock {
+  margin-bottom: 2px; 
+}
+
 .item__precio {
   font-family: "Arial Narrow Bold", sans-serif !important;
   font-size: 18px;

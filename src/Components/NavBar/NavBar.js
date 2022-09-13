@@ -9,51 +9,41 @@ import "../Css/main.css";
 
 function NavBar() {
   const { cartData } = useCartContext();
+
   return (
-    <div className="navar">
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand as={Link} to="/" >
-            {/* <img
-              alt=""
-              src="./Img/pinguin.png"
-              width="45"
-              height="45"
-              className="d-inline-block align-top"
-            /> */}
-              <div className="logo">
-            AG's Fragances
-          </div>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav>
-              <NavDropdown title="Categorias" id="basic-nav-dropdown">
+    <Navbar bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand as={Link} to="/">
+          <div className="logo">AG's Fragances</div>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav>
+            <NavDropdown title="Categorias" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to={`/`}>
-                  Todos
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to={`/category/35sFtcqIByuClg1Tbiwl`}>
-                  Hombre
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to={`/category/qTN4er3wxSkahKOE9xBn`}>
-                  Mujer
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to={`/category/eiyYkbtef9NLKciEFMCG`}>
-                  Unisex
-                </NavDropdown.Item>
-              </NavDropdown>
-              <Nav.Link as={Link} to="/QuienesSomos">
-                Quienes somos
-              </Nav.Link>
-              <Nav.Link as={Link} to="/Contactanos">
-                Contactanos
-              </Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-          {(cartData.length>0)?<CarWidget/>:<p></p>}
-        </Container>
-      </Navbar>
-    </div>
+                Todos
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={`/category/35sFtcqIByuClg1Tbiwl`}>
+                Hombre
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={`/category/qTN4er3wxSkahKOE9xBn`}>
+                Mujer
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={`/category/eiyYkbtef9NLKciEFMCG`}>
+                Unisex
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link as={Link} to="/QuienesSomos">
+              Quienes somos
+            </Nav.Link>
+            <Nav.Link as={Link} to="/Contactanos">
+              Contactanos
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+        {cartData.length > 0 ? <CarWidget /> : <p></p>}
+      </Container>
+    </Navbar>
   );
 }
 

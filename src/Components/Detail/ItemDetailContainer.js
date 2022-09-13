@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { DB } from "../../Data/DataFireBase";
 import "../Css/main.css";
-import { ClimbingBoxLoader } from "react-spinners";
+import { ClockLoader } from "react-spinners";
 
 export default function ItemDetailContainer() {
   const [data, setData] = useState({});
@@ -29,10 +29,11 @@ export default function ItemDetailContainer() {
     <div className="detailContainer">
       {loading ? (
         <div className="dotloader">
-          <ClimbingBoxLoader 
+          <ClockLoader 
             color={"#a10f19"}
             loading={loading}
-            size={25}
+            size={100}
+            
           />
         </div>
       ) : (

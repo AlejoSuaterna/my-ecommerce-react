@@ -15,7 +15,6 @@ import React from "react";
 import styled from "styled-components";
 import { DB } from "../../Data/DataFireBase";
 import "../Css/Cart.css";
-import validator from "validator";
 
 const ResumOrder = styled.div`
   flex: 1;
@@ -103,11 +102,6 @@ const Cart = () => {
         <h2>Tu carrito</h2>
         <hr />
       </div>
-      <div className="cartBottom">
-        <Button as={Link} to="/" className="continue">
-          Continuar comprando
-        </Button>
-      </div>
       <hr />
       {cartData == "" ? (
         <div className="cartTittle">
@@ -175,6 +169,11 @@ const Cart = () => {
                     </Row>
                   </Container>
                 ))}
+                <div className="cartBottom">
+                  <Button as={Link} to="/" className="continue">
+                    Continuar comprando
+                  </Button>
+                </div>
               </Col>
               <Col>
                 {/* desde aqui está la orden */}

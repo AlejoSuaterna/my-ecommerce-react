@@ -17,7 +17,7 @@ function ItemCount(props) {
         <Button className ="boton1"
           variant="secondary"
           onClick={() => {
-            contador > 0 ? setContador(contador - 1) : setContador(contador);
+            contador > 1 ? setContador(contador - 1) : setContador(contador);
           }}
         >
           -
