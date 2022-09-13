@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import "./ItemCount.css"
+import "../Css/ItemCount.css"
 function ItemCount(props) {
   const [contador, setContador] = useState(Number(props.inicial));
 

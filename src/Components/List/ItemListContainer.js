@@ -1,7 +1,7 @@
-import ItemList from "../ItemList/ItemList";
+import ItemList from "./ItemList";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { DB } from "../../Data/DataFireBase";
-import "./itemListContainer.css";
+import "../Css/main.css";
 
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";

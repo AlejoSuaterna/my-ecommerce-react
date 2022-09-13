@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import CarWidget from "../Cart/CarWidget";
 import { Link } from "react-router-dom";
-import "./NavBar.css";
+import "../Css/main.css";
 
 function NavBar() {
   const { cartData } = useCartContext();

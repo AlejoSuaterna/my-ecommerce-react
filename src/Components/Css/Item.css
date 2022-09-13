@@ -1,0 +1,35 @@
+.p1-item {
+  font-family: "Arial Narrow Bold", serif !important;
+  font-size: 22px;
+  font-weight: bold;
+  color: #a10f19;
+  margin-bottom: 12px;
+}
+
+.item-link {
+  text-decoration: none;
+  color: black;
+}
+
+.itemMain {
+  width: 280px;
+  margin-top: 25px;
+}
+
+.item__stock {
+  font-family: "Arial Narrow Bold", sans-serif !important;
+  font-size: 15px;
+  font-style: normal;
+  color: #000000;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.item__precio {
+  font-family: "Arial Narrow Bold", sans-serif !important;
+  font-size: 18px;
+  font-style: normal;
+  color: #000000;
+  text-decoration: none;
+  margin-bottom: -7px;
+}

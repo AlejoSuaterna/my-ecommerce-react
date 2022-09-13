@@ -1,0 +1,30 @@
+.p1 {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.centrar-ItemDetail {
+  margin-top: 150px;
+}
+
+.detalle-producto {
+  /* itemDetailContainer */
+  margin-top: 30px;
+  font-size: 45px;
+}
+
+.dotloader {
+  /*loading entre paginas*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100% !important;
+  height: 85vh !important;
+}
+
+.logo {
+  /* logo principal del navBar */
+  font-family: "Arial Narrow Bold", serif !important;
+  font-weight: bold;
+  font-size: xx-large;
+}
+
