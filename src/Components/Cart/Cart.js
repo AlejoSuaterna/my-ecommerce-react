@@ -3,18 +3,26 @@ import { Col, Container, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
-import { doc, setDoc, collection, updateDoc, increment, } from "firebase/firestore";
+import { useState, useEffect } from "react";
+import {
+  doc,
+  setDoc,
+  collection,
+  updateDoc,
+  increment,
+} from "firebase/firestore";
 import React from "react";
 import styled from "styled-components";
 import { DB } from "../../Data/DataFireBase";
-import "./Cart.css";
+import "../Css/Cart.css";
+import validator from "validator";
 
 const ResumOrder = styled.div`
   flex: 1;
   border: 0.5px solid lightgray;
   border-radius: 10px;
   padding: 20px;
-  height: 90vh;
+  height: 95vh;
 `;
 
 const OrderTitle = styled.h1`
@@ -33,23 +41,26 @@ const OrderText = styled.span``;
 const OrderPrice = styled.span``;
 
 const Cart = () => {
-
   const { cartData, removeProduct, removeList } = useCartContext();
+  const [disabled, setDisabled] = useState(true);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [email2, setEmail2] = useState("");
+
   const totalPrecio = cartData.reduce((prev, next) => {
     return prev + next.quantity * next.precio;
   }, 0);
-  var name = null;
-  var phone = null;
-  var email = null;
 
-  const getData = function () {
-    name = document.getElementById("name").value;
-    phone = document.getElementById("phone").value;
-    email = document.getElementById("email").value;
-  };
+  useEffect(() => {
+    if ((name !== "", phone !== "" && email === email2 && email !== "")) {
+      setDisabled(false);
+    } else {
+      setDisabled(true);
+    }
+  }, [name, phone, email, email2]);
 
   const createOrder = () => {
-    getData();
     const itemsForDB = cartData.map((item) => ({
       id: item.id,
       nombre: item.nombre,
@@ -65,8 +76,8 @@ const Cart = () => {
       },
       items: itemsForDB,
       total: totalPrecio,
+      fecha: Date(Date.now()).toLocaleString(),
     };
-    console.log(name + " " + phone + " " + email);
     const createOrderInFirestore = async () => {
       const newOrderRef = doc(collection(DB, "orders"));
       await setDoc(newOrderRef, order);
@@ -137,15 +148,26 @@ const Cart = () => {
                       <Col
                         m={4}
                         className="itemPrice"
-                      >{`${new Intl.NumberFormat('de-DE', { maximumSignificantDigits: 9 }).format(props.precio)}`}</Col>
-                      <Col m={5} className="subTotal">{`${new Intl.NumberFormat('de-DE', { maximumSignificantDigits: 9 }).format(
-                        props.precio * props.quantity)
-                        }`}</Col>
+                      >{`${new Intl.NumberFormat("de-DE", {
+                        maximumSignificantDigits: 9,
+                      }).format(props.precio)}`}</Col>
+                      <Col m={5} className="subTotal">{`${new Intl.NumberFormat(
+                        "de-DE",
+                        { maximumSignificantDigits: 9 }
+                      ).format(props.precio * props.quantity)}`}</Col>
                       <Col m={6} className="itemClear">
-                        <Button className="btn btn-outline-danger"
+                        <Button
+                          className="btn btn-outline-danger"
                           onClick={() => removeProduct(props.id)}
                         >
-                          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-cart-x-fill" viewBox="0 0 16 16">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="22"
+                            height="22"
+                            fill="currentColor"
+                            class="bi bi-cart-x-fill"
+                            viewBox="0 0 16 16"
+                          >
                             <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM7.354 5.646 8.5 6.793l1.146-1.147a.5.5 0 0 1 .708.708L9.207 7.5l1.147 1.146a.5.5 0 0 1-.708.708L8.5 8.207 7.354 9.354a.5.5 0 1 1-.708-.708L7.793 7.5 6.646 6.354a.5.5 0 1 1 .708-.708z" />
                           </svg>
                         </Button>
@@ -160,19 +182,37 @@ const Cart = () => {
                   <OrderTitle>RESUMEN DE PEDIDO</OrderTitle>
                   <OrderItem>
                     <OrderText>Subtotal</OrderText>
-                    <OrderPrice>{new Intl.NumberFormat('de-DE', { maximumSignificantDigits: 9 }).format(totalPrecio)}</OrderPrice>
+                    <OrderPrice>
+                      {new Intl.NumberFormat("de-DE", {
+                        maximumSignificantDigits: 9,
+                      }).format(totalPrecio)}
+                    </OrderPrice>
                   </OrderItem>
                   <OrderItem>
                     <OrderText>Impuesto</OrderText>
-                    <OrderPrice >{new Intl.NumberFormat('de-DE', { maximumSignificantDigits: 9 }).format(totalPrecio * 0.19)}</OrderPrice>
+                    <OrderPrice>
+                      {new Intl.NumberFormat("de-DE", {
+                        maximumSignificantDigits: 9,
+                      }).format(totalPrecio * 0.19)}
+                    </OrderPrice>
                   </OrderItem>
                   <OrderItem>
                     <OrderText>Valor sin impuesto</OrderText>
-                    <OrderPrice>{new Intl.NumberFormat('de-DE', { maximumSignificantDigits: 9 }).format(totalPrecio - (totalPrecio * 0.19))}</OrderPrice>
+                    <OrderPrice>
+                      {new Intl.NumberFormat("de-DE", {
+                        maximumSignificantDigits: 9,
+                      }).format(totalPrecio - totalPrecio * 0.19)}
+                    </OrderPrice>
                   </OrderItem>
                   <OrderItem type="total">
                     <OrderText>Total</OrderText>
-                    <OrderPrice>{new Intl.NumberFormat('ja-JP', { style: 'currency', currency: 'COP', maximumSignificantDigits: 9 }).format(totalPrecio)}</OrderPrice>
+                    <OrderPrice>
+                      {new Intl.NumberFormat("ja-JP", {
+                        style: "currency",
+                        currency: "COP",
+                        maximumSignificantDigits: 9,
+                      }).format(totalPrecio)}
+                    </OrderPrice>
                   </OrderItem>
                   <Form action="" id="form">
                     <Form.Group className="mb-3">
@@ -180,6 +220,7 @@ const Cart = () => {
                         type="text"
                         id="name"
                         placeholder="Nombre"
+                        onChange={(event) => setName(event.target.value)}
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
@@ -187,19 +228,46 @@ const Cart = () => {
                         type="number"
                         id="phone"
                         placeholder="Telefono"
+                        onChange={(event) => setPhone(event.target.value)}
                       />
                     </Form.Group>
                     <Form.Group className="mb-3">
-                      <Form.Control
-                        type="email"
-                        id="email"
-                        placeholder="Email"
-                      />
+                      <div>
+                        <Form.Control
+                          type="email"
+                          id="email"
+                          placeholder="Email"
+                          onChange={(event) => setEmail(event.target.value)}
+                          style={{
+                            border: email != email2 ? "1px solid red" : "",
+                          }}
+                        ></Form.Control>{" "}
+                      </div>
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                      <div>
+                        <Form.Control
+                          type="email"
+                          id="email2"
+                          placeholder="Vuelva a escribir su email"
+                          onChange={(event) => setEmail2(event.target.value)}
+                          style={{
+                            border: email != email2 ? "1px solid red" : "",
+                          }}
+                        ></Form.Control>{" "}
+                        <br />
+                      </div>
                     </Form.Group>
                   </Form>
-                  <Button variant="success" onClick={() => createOrder()}>
-                    FINALIZAR COMPRA
-                  </Button>
+                  {disabled ? (
+                    <Button style={{ pointerEvents: "none", opacity: ".6" }}>
+                      Faltan datos
+                    </Button>
+                  ) : (
+                    <Button variant="success" onClick={() => createOrder()}>
+                      Realizar Pedido
+                    </Button>
+                  )}
                 </ResumOrder>
               </Col>
             </Row>

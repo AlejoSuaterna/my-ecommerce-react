@@ -9,3 +9,8 @@
 .borrar {
     color: #56070c;
 }
+
+.emailError {
+    font-weight: bold;
+    color: "red" !important;
+}
