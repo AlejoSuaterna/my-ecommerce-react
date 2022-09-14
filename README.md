@@ -2,6 +2,10 @@
 
 Este proyecto es un e-commerce que hasta el momento no tiene definición de un producto especifico. Con este proyecto se busca realizar una profundización de React Js.
 
+
+[![Alt text](https://img.youtube.com/vi/fLge0u04hSY/0.jpg)](https://www.youtube.com/watch?v=fLge0u04hSY)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
