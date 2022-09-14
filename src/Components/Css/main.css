@@ -28,3 +28,10 @@
   font-size: xx-large;
 }
 
+
+.logo2 {
+  /* logo principal del navBar */
+  font-family: "Arial Narrow Bold", serif !important;
+  font-weight: bold;
+  font-size:50px;
+}

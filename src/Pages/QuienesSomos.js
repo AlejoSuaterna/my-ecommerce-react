@@ -1,15 +1,25 @@
 import { NavLink } from "react-router-dom";
 import { Col, Container, Row } from "react-bootstrap";
+import "../Components/Css/main.css";
 
 export default function QuienesSomos() {
   return (
     <div className="page">
-      <h1>Aqui va una descripción de Quienes Somos!</h1>
+      <h1 className="logo2">AG'S Fragances</h1>
+      <h1 className="logo">¡siempre a tu alcance!</h1>
+      <h1>{" "}</h1>
       <div>
         <Container className="cartGrid">
           <Row>
-            <Col xs={5}>Aqui bonita imagen</Col>
-            <Col xs={5}>y aqui descripción</Col>
+            <Col xs={5}>
+              <img
+                src="https://cloudfront-us-east-1.images.arcpublishing.com/semana/VNR33KD6S5AXBFFFUSGK45C53U.jpg"
+                width="500"
+                align="center"
+                alt=""
+              />
+            </Col>
+            <Col xs={5}>Somos distribuidores de perfumes</Col>
           </Row>
         </Container>
       </div>

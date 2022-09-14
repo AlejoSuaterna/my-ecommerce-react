@@ -1,17 +1,17 @@
 import { NavLink } from 'react-router-dom';
-import { Col, Container, Row } from "react-bootstrap";
+import "../Components/Css/main.css";
 
 export default function Contactanos () {
     return (
         <div className="page">
-            <h1>Aqui puede ir un formulario e info de contacto</h1>
+            <h1 className='logo2'>¡No dudes en contactarnos!</h1>
             <div>
-        <Container className="cartGrid">
-          <Row>
-            <Col xs={5}>Aqui bonita imagen</Col>
-            <Col xs={5}>y aqui descripción</Col>
-          </Row>
-        </Container>
+        <img
+                src="https://static.vecteezy.com/system/resources/previews/006/878/052/non_2x/glass-bottles-with-different-perfumes-on-a-white-background-free-photo.jpg"
+                width="700"
+                align="center"
+                alt=""
+              />
       </div>
             <footer>
                 <NavLink className={({isActive}) => isActive ? 'pagina-activa' : undefined } to="/">Home</NavLink>
