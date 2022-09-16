@@ -1,4 +1,4 @@
-# DESCRIPCIÓN DEL PROYECTO AG'S FRAGANCES
+# DESCRIPCIÓN DEL PROYECTO "AG'S FRAGANCES"
 
 Este proyecto es un e-commerce de venta de perfumes de calidad tanto para hombre, mujer y unisex. Con este proyecto se busca realizar una profundización de React Js.
 
